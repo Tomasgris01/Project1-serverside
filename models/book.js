@@ -35,6 +35,14 @@ deleteBook = async (name) => {
 
 }
 
+updateBook = async (data) => {
+    var id = data._id;
+    console.log(id);
+    console.table(data)
+    await Book.findByIdAndUpdate({_id: id}, {...data})
+}
+
 exports.readBook = readBook;
 exports.createBook = createBook;
 exports.deleteBook = deleteBook;
+exports.updateBook = updateBook;
