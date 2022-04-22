@@ -13,5 +13,13 @@
     "express-handlebars": "^6.0.3",
     "mongoose": "^6.2.9"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tomasgris01/Project1-serverside.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Tomasgris01/Project1-serverside/issues"
+  },
+  "homepage": "https://github.com/Tomasgris01/Project1-serverside#readme",
   "description": ""
 }

@@ -7,7 +7,7 @@ router.get('/', async (req, res) =>
 {
     const book = await readBook();
 
-    res.render('listing', { personlist: staff })
+    res.render('listing', { personlist: book })
     
 })
 
@@ -17,7 +17,7 @@ router.get('/:name', async (req, res) => {
     const person = await readBook({'name': name})
 
     if (!person) {
-        console.log('404 because person doesn\'t exist');
+        console.log('404 because book doesn\'t exist');
         res.render('404');
     }
     else {
