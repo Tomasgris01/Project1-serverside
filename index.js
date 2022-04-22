@@ -20,6 +20,7 @@ var handlebars = require('express-handlebars')
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
+app.use(express.urlencoded({ extended: true }))
 
 const connectionString = 'mongodb://127.0.0.1:27017/SS2022'
 

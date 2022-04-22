@@ -24,4 +24,17 @@ readBook = async (options={}) =>
    
 }
 
+createBook = async (data) => {
+    let bookDoc = new Book(data);
+    await bookDoc.save();
+}
+
+deleteBook = async (name) => {
+    const book = await Book.findOne({ name: name });
+    await book.remove();
+
+}
+
 exports.readBook = readBook;
+exports.createBook = createBook;
+exports.deleteBook = deleteBook;
