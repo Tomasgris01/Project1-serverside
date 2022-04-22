@@ -21,20 +21,31 @@ app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
 
+const connectionString = 'mongodb://127.0.0.1:27017/SS2022'
+
+mongoose.connect(connectionString, {
+    "useNewUrlParser": true,
+    "useUnifiedTopology": true
+  }).
+  catch ( error => {
+    console.log('Database connection refused' + error);
+    process.exit(2);
+  })
+  
+  const db = mongoose.connection;
+  
+  db.on('error', console.error.bind(console, 'connection error:'));
+  
+  db.once('open', () => {
+    console.log("DB connected")
+  });
+  
+
 
 app.use(cookieParser("Tomas cookie"));
 
 
 app.use('/', home)
-
-var foil = {
-    "name": "Tomas",
-    "dob": "11/03/2001",
-    "imageurl": "/images/face.jpg"
-}
-
-app.get('/foil', (req, res) =>
-    res.render('person', { person: foil }))
 
 // custom 404 page
 app.use((req, res) => {
