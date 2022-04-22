@@ -46,6 +46,7 @@ app.use(cookieParser("Tomas cookie"));
 
 
 app.use('/', home)
+app.use('/book', book)
 
 // custom 404 page
 app.use((req, res) => {
