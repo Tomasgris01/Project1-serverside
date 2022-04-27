@@ -3,6 +3,13 @@ const { readBook, createBook, deleteBook, updateBook } = require('../models/book
 const router = express.Router();
 
 
+router.get('/addnew', async (req, res) => {
+
+    res.render('personform')
+
+
+})
+
 
 router.post('/addnew', async (req, res) => {
 
@@ -19,12 +26,7 @@ router.post('/addnew', async (req, res) => {
 
 })
 
-router.get('/addnew', async (req, res) => {
 
-    res.render('personform')
-
-
-})
 
 router.get('/:name', async (req, res) => {
     var name = req.params.name;
@@ -67,6 +69,14 @@ router.get('/:name/edit', async (req, res) => {
 router.post('/:name/edit', async (req, res) => {
 
     await updateBook(req.body);
+
+    req.session.flash =
+    {
+        type: 'success', intro: 'Data Updated:', message: "Data for <strong>" +
+            req.body.name + "</strong> has been updated"
+    };
+
+
 
     res.redirect(303, '/book')
 
